@@ -55,7 +55,7 @@ function TaskCreate() {
                     <div className="card">
                         <div className="card-header">
                             <h4>Add Task
-                                <Link to="/tasks" className="btn btn-primary float-end">
+                                <Link to="/" className="btn btn-primary float-end">
                                     Back
                                 </Link>
                             </h4>
