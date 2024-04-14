@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Navs() {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary shadow">
         <Container>
           <Navbar.Brand href="/">React-Laravel</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
