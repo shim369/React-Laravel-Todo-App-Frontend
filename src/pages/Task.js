@@ -25,7 +25,7 @@ function Task() {
     let taskDetails = "";
     taskDetails = tasks.map((item, index) => {
         return (
-            <tr key={index}>
+            <tr key={index} className="align-middle">
                 <td>{item.name}</td>
                 <td><Link to={item.url} target="_blank">{item.url}</Link></td>
                 <td>
@@ -53,7 +53,7 @@ function Task() {
                         <div className="card-body">
                             <table className="table table-striped">
                                 <thead>
-                                    <tr className="">
+                                    <tr className="align-middle">
                                         <th>Task Name</th>
                                         <th>Task URL</th>
                                         <th>Edit</th>

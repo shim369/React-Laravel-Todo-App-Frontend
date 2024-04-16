@@ -48,7 +48,7 @@ function TaskCreate() {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="card-header">
-                            <h4>Add Task
+                            <h4 className="d-flex align-items-center justify-content-between m-0">Add Task
                                 <Link to="/" className="btn btn-primary float-end">
                                     Back
                                 </Link>
