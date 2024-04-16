@@ -26,7 +26,6 @@ function Task() {
     taskDetails = tasks.map((item, index) => {
         return (
             <tr key={index}>
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td><Link to={item.url} target="_blank">{item.url}</Link></td>
                 <td>
@@ -45,8 +44,8 @@ function Task() {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="card-header">
-                            <h4>Task
-                            <Link to="/tasks/create" className="btn btn-primary float-end">
+                            <h4 className="d-flex align-items-center justify-content-between m-0">Task
+                            <Link to="/tasks/create" className="btn btn-primary">
                                 Add Task
                             </Link>
                             </h4>
@@ -54,10 +53,9 @@ function Task() {
                         <div className="card-body">
                             <table className="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>URL</th>
+                                    <tr className="">
+                                        <th>Task Name</th>
+                                        <th>Task URL</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
