@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function TaskCreate() {
-    const [inputErrorList, setInputErrorList] = useState({})
+    const [errors, setErrors] = useState([])
     const [task, setTask] = useState({
         name: '',
         url: '',
@@ -22,29 +22,23 @@ function TaskCreate() {
             url: task.url,
         }
 
-        let isEmpty = false;
-        let errors = {};
+        let errors = [];
 
-        if (data.name.trim() === '') {
-            isEmpty = true;
-            errors.name = 'Name is required';
+        if (!data.name) {
+            errors.push("Task name is required!")
         }
 
-        if (data.url.trim() === '') {
-            isEmpty = true;
-            errors.url = 'URL is required';
+        if (!data.url) {
+            errors.push("Task url is required!")
         }
 
-        if (isEmpty) {
-            setInputErrorList(errors);
-            return;
-        }
+        setErrors(errors);
 
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/save_task', data);
             alert(response.data.message);
         } catch (error) {
-            setInputErrorList(error.response.data.errors || {});
+            errors.push(error.response);
         }
     }
 
@@ -63,14 +57,21 @@ function TaskCreate() {
                         <div className="card-body">
                             <form onSubmit={saveTask}>
                                 <div className="mb-3">
-                                    <label>Name</label>
+                                    <label>Task Name</label>
                                     <input type="text" name="name" value={task.name} onChange={hadleInput} className="form-control" />
-                                    <span className="text-danger">{inputErrorList.name}</span>
+                                    <span className="text-danger">{errors.name}</span>
                                 </div>
                                 <div className="mb-3">
-                                    <label>URL</label>
+                                    <label>Task URL</label>
                                     <input type="text" name="url" value={task.url} onChange={hadleInput} className="form-control" />
-                                    <span className="text-danger">{inputErrorList.url}</span>
+                                    <span className="text-danger">{errors.url}</span>
+                                </div>
+                                <div>
+                                    <ul className="text-danger">
+                                        {errors.map((error, index) => (
+                                            <li key={index}>{error}</li>
+                                        ))}
+                                    </ul>
                                 </div>
                                 <div className="mb-3">
                                     <button type="submit" className="btn btn-primary">Save Task</button>
