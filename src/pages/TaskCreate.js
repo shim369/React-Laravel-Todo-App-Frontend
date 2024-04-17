@@ -59,12 +59,10 @@ function TaskCreate() {
                                 <div className="mb-3">
                                     <label>Task Name</label>
                                     <input type="text" name="name" value={task.name} onChange={hadleInput} className="form-control" />
-                                    <span className="text-danger">{errors.name}</span>
                                 </div>
                                 <div className="mb-3">
                                     <label>Task URL</label>
                                     <input type="text" name="url" value={task.url} onChange={hadleInput} className="form-control" />
-                                    <span className="text-danger">{errors.url}</span>
                                 </div>
                                 <div>
                                     <ul className="text-danger">
