@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function TaskCreate() {
+    const navigate = useNavigate()
     const [errors, setErrors] = useState([])
     const [task, setTask] = useState({
         name: '',
@@ -37,6 +38,7 @@ function TaskCreate() {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/save_task', data);
             alert(response.data.message);
+            navigate('/')
         } catch (error) {
             errors.push(error.response);
         }
