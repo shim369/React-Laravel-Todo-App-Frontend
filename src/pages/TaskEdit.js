@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function TaskEdit() {
+    const navigate = useNavigate()
     let { id } = useParams();
     const [errors, setErrors] = useState([])
     const [task, setTask] = useState({
@@ -59,6 +60,7 @@ function TaskEdit() {
         try {
             const response = await axios.post(`http://127.0.0.1:8000/api/update_task/${id}`, data);
             alert(response.data.message);
+            navigate('/')
         } catch (error) {
             errors.push(error.response);
         }
