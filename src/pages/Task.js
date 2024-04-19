@@ -29,7 +29,7 @@ function Task() {
                 <td>{item.name}</td>
                 <td><Link to={item.url} target="_blank">{item.url}</Link></td>
                 <td>
-                    <Link to="/" className="btn btn-success">Edit</Link>
+                    <Link to={`/tasks/${item.id}/edit`} className="btn btn-success">Edit</Link>
                 </td>
                 <td>
                     <button className="btn btn-danger">Delete</button>
