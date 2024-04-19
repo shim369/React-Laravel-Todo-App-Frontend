@@ -9,19 +9,30 @@ function Task() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-      axios.get('http://127.0.0.1:8000/api/tasks').then(res => {
-        console.log(res)
-        setTasks(res.data.tasks);
-        setLoading(false);
-      });
+        axios.get('http://127.0.0.1:8000/api/tasks').then(res => {
+            setTasks(res.data.tasks);
+            setLoading(false);
+        });
     }, [])
 
-    if(loading) {
+    if (loading) {
         return (
             <Loading />
         )
     }
-    
+
+    const deleteTask = async (id) => {
+        try {
+            const response = await axios.delete(`http://127.0.0.1:8000/api/delete_task/${id}`);
+            if (response.data.code === 200) {
+                alert(response.data.message);
+                setTasks(tasks.filter((task) => task.id !== id));
+            }
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
     let taskDetails = "";
     taskDetails = tasks.map((item, index) => {
         return (
@@ -32,12 +43,12 @@ function Task() {
                     <Link to={`/tasks/${item.id}/edit`} className="btn btn-success">Edit</Link>
                 </td>
                 <td>
-                    <button className="btn btn-danger">Delete</button>
+                    <button type="submit" className="btn btn-danger" onClick={() => deleteTask(item.id)}>Delete</button>
                 </td>
             </tr>
         )
     })
-    
+
     return (
         <div className="container mt-5">
             <div className="row">
@@ -45,9 +56,9 @@ function Task() {
                     <div className="card">
                         <div className="card-header">
                             <h4 className="d-flex align-items-center justify-content-between m-0">Task
-                            <Link to="/tasks/create" className="btn btn-primary">
-                                Add Task
-                            </Link>
+                                <Link to="/tasks/create" className="btn btn-primary">
+                                    Add Task
+                                </Link>
                             </h4>
                         </div>
                         <div className="card-body">
