@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import "../App.css"
 
 function Task() {
 
@@ -41,9 +42,15 @@ function Task() {
     taskDetails = tasks.map((item, index) => {
         return (
             <tr key={index} className="align-middle">
-                <td><FontAwesomeIcon icon={faCheck} /></td>
-                <td>{item.name}</td>
-                <td><Link to={item.url} target="_blank">{item.url}</Link></td>
+                <td className="checkTd">
+                    <span className="check">
+                        {Number(item.completed) === 1 && (
+                        <FontAwesomeIcon icon={faCheck} />
+                        )}
+                    </span>
+                </td>
+                <td className="nameTd">{item.name}</td>
+                <td className="urlTd"><Link to={item.url} target="_blank">{item.url}</Link></td>
                 <td>
                     <Link to={`/tasks/${item.id}/edit`} className="btn btn-success"><FontAwesomeIcon icon={faPenToSquare} /></Link>
                 </td>
