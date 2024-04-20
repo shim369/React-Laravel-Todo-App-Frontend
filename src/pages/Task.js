@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function Task() {
 
@@ -37,13 +41,14 @@ function Task() {
     taskDetails = tasks.map((item, index) => {
         return (
             <tr key={index} className="align-middle">
+                <td><FontAwesomeIcon icon={faCheck} /></td>
                 <td>{item.name}</td>
                 <td><Link to={item.url} target="_blank">{item.url}</Link></td>
                 <td>
-                    <Link to={`/tasks/${item.id}/edit`} className="btn btn-success">Edit</Link>
+                    <Link to={`/tasks/${item.id}/edit`} className="btn btn-success"><FontAwesomeIcon icon={faPenToSquare} /></Link>
                 </td>
                 <td>
-                    <button type="submit" className="btn btn-danger" onClick={() => deleteTask(item.id)}>Delete</button>
+                    <button type="submit" className="btn btn-danger" onClick={() => deleteTask(item.id)}><FontAwesomeIcon icon={faTrash} /></button>
                 </td>
             </tr>
         )
@@ -65,6 +70,7 @@ function Task() {
                             <table className="table table-striped">
                                 <thead>
                                     <tr className="align-middle">
+                                        <th></th>
                                         <th>Task Name</th>
                                         <th>Task URL</th>
                                         <th>Edit</th>
