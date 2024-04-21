@@ -42,20 +42,20 @@ function Task() {
     taskDetails = tasks.map((item, index) => {
         return (
             <tr key={index} className="align-middle">
-                <td className="checkTd">
+                <td className="checkTd text-center">
                     <span className="check">
                         {Number(item.completed) === 1 && (
-                        <FontAwesomeIcon icon={faCheck} />
+                        <FontAwesomeIcon icon={faCheck} className="text-primary" />
                         )}
                     </span>
                 </td>
                 <td className="nameTd">{item.name}</td>
                 <td className="urlTd"><Link to={item.url} target="_blank">{item.url}</Link></td>
-                <td>
-                    <Link to={`/tasks/${item.id}/edit`} className="btn btn-success"><FontAwesomeIcon icon={faPenToSquare} /></Link>
+                <td className="text-center">
+                    <Link to={`/tasks/${item.id}/edit`}><FontAwesomeIcon icon={faPenToSquare} className="text-success" /></Link>
                 </td>
-                <td>
-                    <button type="submit" className="btn btn-danger" onClick={() => deleteTask(item.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                <td className="text-center">
+                    <button type="submit" className="border-0 bg-transparent" onClick={() => deleteTask(item.id)}><FontAwesomeIcon icon={faTrash} className="text-danger" /></button>
                 </td>
             </tr>
         )
@@ -76,7 +76,7 @@ function Task() {
                         <div className="card-body">
                             <table className="table table-striped">
                                 <thead>
-                                    <tr className="align-middle">
+                                    <tr className="align-middle text-center">
                                         <th></th>
                                         <th>Task Name</th>
                                         <th>Task URL</th>
