@@ -24,13 +24,13 @@ function TaskEdit() {
     }, [id])
 
 
-    const hadleInput = (e) => {
+    const hadleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.persist();
         setTask({ ...task, [e.target.name]: e.target.value });
     }
 
 
-    const handleCheckboxChange = (e) => {
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, checked } = e.target;
         setTask(prevState => ({
             ...prevState,
@@ -38,7 +38,7 @@ function TaskEdit() {
         }));
     };
    
-    const updateTask = async (e) => {
+    const updateTask = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const data = {
@@ -63,7 +63,7 @@ function TaskEdit() {
             const response = await axios.post(`http://127.0.0.1:8000/api/update_task/${id}`, data);
             alert(response.data.message);
             navigate('/')
-        } catch (error) {
+        } catch (error: any) {
             errors.push(error.response);
         }
     }

@@ -1,7 +1,6 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import React from "react";
 import { Todo } from "../../types/todo";
 
 function TaskCreate() {
@@ -14,12 +13,12 @@ function TaskCreate() {
         completed: false
     })
 
-    const hadleInput = (e) => {
+    const hadleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.persist();
         setTask({ ...task, [e.target.name]: e.target.value });
     }
 
-    const saveTask = async (e) => {
+    const saveTask = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const data = {
@@ -43,7 +42,7 @@ function TaskCreate() {
             const response = await axios.post('http://127.0.0.1:8000/api/save_task', data);
             alert(response.data.message);
             navigate('/')
-        } catch (error) {
+        } catch (error: any) {
             errors.push(error.response);
         }
     }
