@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import TaskList from '../pages/Task.js'
-import TaskCreate from '../pages/TaskCreate.js'
-import TaskEdit from '../pages/TaskEdit.js'
+import TaskList from '../pages/Task'
+import TaskCreate from '../pages/TaskCreate'
+import TaskEdit from '../pages/TaskEdit'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
 
 
 function MyRouter() {

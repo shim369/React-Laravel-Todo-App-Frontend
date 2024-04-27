@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React from "react";
+import { Todo } from "../../types/todo";
 
 function TaskEdit() {
     const navigate = useNavigate()
     let { id } = useParams();
-    const [errors, setErrors] = useState([])
-    const [task, setTask] = useState({
+    const [errors, setErrors] = useState<string[]>([])
+    const [task, setTask] = useState<Todo>({
         id: 0,
         name: '',
         url: '',
@@ -45,7 +47,7 @@ function TaskEdit() {
             completed: task.completed
         }
 
-        let errors = [];
+        let errors: string[] = [];
 
         if (!data.name) {
             errors.push("Task name is required!")

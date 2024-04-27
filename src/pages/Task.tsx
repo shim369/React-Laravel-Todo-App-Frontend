@@ -7,11 +7,13 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "../App.css"
+import React from "react";
+import { Todo } from "../../types/todo";
 
 function Task() {
 
     const [loading, setLoading] = useState(true);
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState<Todo[]>([]);
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/tasks').then(res => {
@@ -26,7 +28,7 @@ function Task() {
         )
     }
 
-    const deleteTask = async (id) => {
+    const deleteTask = async (id: number) => {
         try {
             const response = await axios.delete(`http://127.0.0.1:8000/api/delete_task/${id}`);
             if (response.data.code === 200) {
@@ -38,7 +40,7 @@ function Task() {
         };
     };
 
-    let taskDetails = "";
+    let taskDetails: JSX.Element[] = [];
     taskDetails = tasks.map((item, index) => {
         return (
             <tr key={index} className="align-middle">

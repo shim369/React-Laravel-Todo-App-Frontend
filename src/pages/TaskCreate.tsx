@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React from "react";
+import { Todo } from "../../types/todo";
 
 function TaskCreate() {
     const navigate = useNavigate()
-    const [errors, setErrors] = useState([])
-    const [task, setTask] = useState({
+    const [errors, setErrors] = useState<string[]>([])
+    const [task, setTask] = useState<Todo>({
+        id: 0,
         name: '',
         url: '',
+        completed: false
     })
 
     const hadleInput = (e) => {
@@ -23,7 +27,7 @@ function TaskCreate() {
             url: task.url,
         }
 
-        let errors = [];
+        let errors: string[] = [];
 
         if (!data.name) {
             errors.push("Task name is required!")

@@ -1,6 +1,6 @@
 import React from 'react'
-import MyRouter from './router/index.js'
-import Navs from './components/Navs.js';
+import MyRouter from './router/index'
+import Navs from './components/Navs';
 
 function App() {
   return (
