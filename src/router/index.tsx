@@ -3,7 +3,6 @@ import TaskList from '../pages/Task'
 import TaskCreate from '../pages/TaskCreate'
 import TaskEdit from '../pages/TaskEdit'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
 
 
 function MyRouter() {

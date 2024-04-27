@@ -7,7 +7,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "../App.css"
-import React from "react";
 import { Todo } from "../../types/todo";
 
 function Task() {

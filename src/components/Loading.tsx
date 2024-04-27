@@ -1,6 +1,3 @@
-import React from "react";
-
-
 function Loading() {
     return (
         <div className="conatiner mt-3 d-flex justify-content-center">
