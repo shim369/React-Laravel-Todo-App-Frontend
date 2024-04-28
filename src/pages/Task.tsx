@@ -31,8 +31,7 @@ function Task() {
         try {
             const response = await axios.delete(`http://127.0.0.1:8000/api/delete_task/${id}`);
             if (response.data.code === 200) {
-                // alert(response.data.message);
-                console.log(response.data.message)
+                alert(response.data.message);
                 setTasks(tasks.filter((task) => task.id !== id));
             }
         } catch (error) {
