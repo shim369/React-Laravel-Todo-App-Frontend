@@ -56,7 +56,7 @@ function Task() {
                     <Link to={`/tasks/${item.id}/edit`}><FontAwesomeIcon icon={faPenToSquare} className="text-success" /></Link>
                 </td>
                 <td className="text-center">
-                    <button type="submit" className="border-0 bg-transparent" onClick={() => deleteTask(item.id)}><FontAwesomeIcon icon={faTrash} className="text-danger" /></button>
+                    <button type="submit" className="border-0 bg-transparent" onClick={() => deleteTask(item.id)}><FontAwesomeIcon icon={faTrash} className="text-danger" data-testid="delete-button-28" /></button>
                 </td>
             </tr>
         )
