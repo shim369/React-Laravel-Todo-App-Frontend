@@ -62,12 +62,12 @@ function TaskCreate() {
                         <div className="card-body">
                             <form onSubmit={saveTask}>
                                 <div className="mb-3">
-                                    <label>Task Name</label>
-                                    <input type="text" name="name" value={task.name} onChange={hadleInput} className="form-control" />
+                                    <label htmlFor="name">Task Name</label>
+                                    <input type="text" id="name" name="name" value={task.name} onChange={hadleInput} className="form-control" />
                                 </div>
                                 <div className="mb-3">
-                                    <label>Task URL</label>
-                                    <input type="text" name="url" value={task.url} onChange={hadleInput} className="form-control" />
+                                    <label htmlFor="url">Task URL</label>
+                                    <input type="text" id="url" name="url" value={task.url} onChange={hadleInput} className="form-control" />
                                 </div>
                                 <div>
                                     <ul className="text-danger">
