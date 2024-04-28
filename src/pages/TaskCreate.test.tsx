@@ -5,10 +5,13 @@ import TaskCreate from './TaskCreate';
 
 jest.mock('axios');
 
+const mockAlert = jest.fn();
+window.alert = mockAlert;
+
 describe('TaskCreate Component', () => {
   test('should submit form data and show success message', async () => {
     const mockPost = axios.post as jest.Mock;
-    const mockResponse = { data: { message: 'Task saved successfully!' } };
+    const mockResponse = { data: { message: 'Task Created Successfully!' } };
     mockPost.mockResolvedValue(mockResponse);
 
     const { getByLabelText, getByText } = render(
@@ -32,6 +35,7 @@ describe('TaskCreate Component', () => {
     });
 
     await waitFor(() => {
+      expect(mockAlert).toHaveBeenCalledWith('Task Created Successfully!');
       expect(window.location.pathname).toEqual('/');
     });
   });
