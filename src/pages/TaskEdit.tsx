@@ -17,10 +17,16 @@ function TaskEdit() {
 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/get_task/${id}`).then(res => {
-            console.log(res)
-            setTask(res.data);
-        });
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/get_task/${id}`);
+            setTask(response.data);
+          } catch (error: any) {
+            console.error('Error fetching task:', error);
+          }
+        };
+    
+        fetchData();
     }, [id])
 
 
@@ -83,17 +89,17 @@ function TaskEdit() {
                         <div className="card-body">
                             <form onSubmit={updateTask}>
                                 <div className="mb-3">
-                                    <label>Task Name</label>
-                                    <input type="text" name="name" value={task.name} onChange={hadleInput} className="form-control" />
+                                    <label htmlFor="name">Task Name</label>
+                                    <input type="text" id="name" name="name" value={task.name} onChange={hadleInput} className="form-control" />
                                 </div>
                                 <div className="mb-3">
-                                    <label>Task URL</label>
-                                    <input type="text" name="url" value={task.url} onChange={hadleInput} className="form-control" />
+                                    <label htmlFor="url">Task URL</label>
+                                    <input type="text" id="url" name="url" value={task.url} onChange={hadleInput} className="form-control" />
                                 </div>
                                 <div className="mb-3">
-                                    <label>Task Completed</label>
+                                    <label htmlFor="completed">Task Completed</label>
                                     <div>
-                                        <input type="checkbox" name="completed" checked={task.completed} onChange={handleCheckboxChange} className="form-check-input" />
+                                        <input type="checkbox" id="completed" name="completed" checked={task.completed} onChange={handleCheckboxChange} className="form-check-input" />
                                     </div>
                                 </div>
                                 <div>
