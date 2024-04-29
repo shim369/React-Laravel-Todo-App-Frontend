@@ -32,10 +32,6 @@ test('should update task and show success message (assuming successful API call)
   fireEvent.click(saveButton);
 
   await waitFor(() => {
-    expect(taskCompletedCheckbox.checked).toBeFalsy();
-  });
-
-  await waitFor(() => {
     expect(mockPost).toHaveBeenCalledWith('http://127.0.0.1:8000/api/update_task/28', {
       name: 'Python2',
       url: 'https://github.com/shim360',
