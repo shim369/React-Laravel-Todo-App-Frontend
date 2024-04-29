@@ -23,19 +23,23 @@ test('should update task and show success message (assuming successful API call)
 
   const taskNameInput = getByLabelText('Task Name', { selector: 'input' });
   const taskUrlInput = getByLabelText('Task URL', { selector: 'input' });
-  const taskCompletedCheckbox = getByRole('checkbox');
+  const taskCompletedCheckbox = getByRole('checkbox') as HTMLInputElement;
   const saveButton = getByText('Update Task', { selector: 'button' });
 
-  fireEvent.change(taskNameInput, { target: { value: 'Python3' } });
-  fireEvent.change(taskUrlInput, { target: { value: 'https://github.com/shim369' } });
-  fireEvent.click(taskCompletedCheckbox);
+  fireEvent.change(taskNameInput, { target: { value: 'Python2' } });
+  fireEvent.change(taskUrlInput, { target: { value: 'https://github.com/shim360' } });
+  taskCompletedCheckbox.checked = false;
   fireEvent.click(saveButton);
 
   await waitFor(() => {
+    expect(taskCompletedCheckbox.checked).toBeFalsy();
+  });
+
+  await waitFor(() => {
     expect(mockPost).toHaveBeenCalledWith('http://127.0.0.1:8000/api/update_task/28', {
-      name: 'Python3',
-      url: 'https://github.com/shim369',
-      completed: true,
+      name: 'Python2',
+      url: 'https://github.com/shim360',
+      completed: false,
     });
   });
 
